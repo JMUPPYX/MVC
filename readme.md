@@ -25,9 +25,12 @@ Lors d'une action, il envoit un évenement au model qui peut être ajouter/modif
 ![capture d'ecran](/img/images.png)
 
 Exemple :
+
 Ne pas oublier la connexion avec PDO si vous souhaitez effectuer un test...
 
-Modél
+Modél : 
+
+On crée un classe pour représenter une entité de notre application avec des proriétés vide.
 ````php
 // Film.php
 class Film {
@@ -46,8 +49,10 @@ class Film {
 }
 ````
 
-Vue interface utilisateur :
-````php
+Vue : 
+
+ Interface utilisateur :
+````html
 <!-- film_details.php -->
 <!DOCTYPE html>
 <html lang="fr">
@@ -65,12 +70,16 @@ Vue interface utilisateur :
 </html>
 ````
 
-Controller 
+Controller :
+
+Gére les interactions entre le model et la vue il contrôle tout simplement.
+On pourrait créer une classe controller avec des fonctions pour ajouter/modifier/supprimer des films.
+
 ````php
 // FilmsController.php
 class FilmsController {
     public function details($filmId) {
-        // récuperation des données depuis la base de donnée
+        // récuperation des données depuis le model (qui se connecte à la BDD)
         $film = new Film(1, "Inception", "Christopher Nolan", 2010);
         require_once 'film_details.php'; // Charge la vue
     }
